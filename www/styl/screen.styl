@@ -1,0 +1,51 @@
+@import colors
+@import prefixes
+@import 'components/triangle'
+
+
+@import basics
+body
+  font-family 'Roboto', sans-serif
+  color #311
+  section
+    float left
+    width 100%
+    height 100vh
+    text-align center
+  h1
+    font-weight 100
+    font-size 50px
+  h2
+    font-size 80px
+    .black-bold
+      padding 2px 20px
+  a
+    color #611
+    &:hover
+      text-decoration none
+  section:nth-child(2n)
+    background #311
+  .black-bold
+    background #311
+    color white
+    font-family 'Roboto Condensed'
+    padding 2px 5px
+    font-weight 700
+  .svg-container
+    position relative
+    width 600px
+    margin 0px auto
+    margin-top 40px
+    svg
+      margin-top 23px
+      path
+        fill none
+        stroke #311
+        stroke-width 2
+      circle
+        stroke #311
+        stroke-width 2
+        fill white
+    .label
+      position absolute
+      transform translate(-50%, -50%)
