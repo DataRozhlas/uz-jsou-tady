@@ -39,8 +39,19 @@ svg.selectAll \circle .data values .enter!append \circle
   ..attr \cx scaleX
   ..attr \cy scaleY
 
-svgContainer.selectAll \span .data values .enter!append \span
+svgContainer.selectAll \span.label .data values .enter!append \span
   ..attr \class "label black-bold"
   ..html -> it
   ..style \left -> "#{scaleX ...}px"
   ..style \top -> "#{scaleY ...}px"
+len = values.length
+dates = values.map (d, i) ->
+  d = new Date!
+    ..setHours 12
+  d.setTime d.getTime! - (len - i - 1) * 86400 * 1e3
+  d
+dayNames = <[Ne Po Út St Čt Pá So]>
+svgContainer.selectAll \span.label-x .data dates .enter!append \span
+  ..attr \class "label-x"
+  ..html -> "#{it.getDate!}.<br><span>#{dayNames[it.getDay!]}</span>"
+  ..style \left -> "#{scaleX ...}px"
