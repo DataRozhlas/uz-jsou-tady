@@ -53,7 +53,7 @@ historyContainer = d3.select ig.containers['total-history']
 currentStep = 0
 scrolled = no
 d3.select document .on \keydown.total ->
-  return unless d3.event.keyCode == 40
+  return unless d3.event.keyCode in [32, 34, 40]
   return if d3.event.defaultPrevented
   if currentStep > maxStep
     if not scrolled

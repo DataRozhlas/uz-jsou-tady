@@ -61,7 +61,7 @@ svgContainer.selectAll \span.label-x .data dates .enter!append \span
 
 scrolled = no
 d3.select document .on \keydown.daily ->
-  return unless d3.event.keyCode == 40
+  return unless d3.event.keyCode in [32, 34, 40]
   return if scrolled
   scrolled := yes
   d3.event.preventDefault!

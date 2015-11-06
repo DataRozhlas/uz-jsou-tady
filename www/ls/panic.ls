@@ -37,7 +37,7 @@ scrolled = no
 maxStep = 2
 
 d3.select document .on \keydown.panic ->
-  return unless d3.event.keyCode == 40
+  return unless d3.event.keyCode in [32, 34, 40]
   return if d3.event.defaultPrevented
   if currentStep > maxStep
     return
