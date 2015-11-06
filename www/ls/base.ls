@@ -6,7 +6,6 @@ scrollTween = (offset) ->
     (progress) -> window.scrollTo 0, interpolate progress
 
 window.smoothScroll = (offset) ->
-  console.log offset
   d3.transition!
     .duration 800
     .tween "scroll" scrollTween offset

@@ -10,11 +10,11 @@ externalStyles =
   # \https://samizdat.cz/tools/tooltip/v1.1.4.css
   ...
 
-externalData = {}
-  # "leky": "#__dirname/data/leky.tsv"
+externalData =
+  "evropa": "#__dirname/data/evropa.topo.json"
 
-preferScripts = <[ total-graph.js daily-graph.js utils.js postInit.js _loadData.js ../data.js init.js _loadExternal.js]>
-deferScripts = <[ geoUtils.js base.js ]>
+preferScripts = <[ panic.js total-graph.js daily-graph.js geoUtils.js utils.js postInit.js _loadData.js ../data.js init.js _loadExternal.js]>
+deferScripts = <[ base.js ]>
 develOnlyScripts = <[ _loadData.js _loadExternal.js]>
 gzippable = <[ www/index.deploy.html www/script.deploy.js ]>
 safe-deployable =

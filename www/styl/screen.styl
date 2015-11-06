@@ -123,6 +123,12 @@ body
         text-align center
   section.panic
     min-height 100vh
+    h2
+      font-size 38px
+      font-weight 300
+      .black-bold
+        margin 0px 0.2em
+        padding 0px 10px
     .list
       float left
       width 100%
@@ -130,12 +136,6 @@ body
       > ol
         width 600px
         margin 0px auto
-      > h2
-        font-size 38px
-        font-weight 300
-        .black-bold
-          margin 0px 0.2em
-          padding 0px 10px
       > ol
         text-align left
         counter-reset list
@@ -157,3 +157,17 @@ body
             margin 0px
             font-size 16px
             color desaturate(lighten(MainColor, 40%), 80%)
+      .map
+        overflow hidden
+        position relative
+        margin-top 18px
+        svg
+          fill MainColor
+          stroke SecondaryColorDark
+        span
+          position absolute
+          background SecondaryColorLight
+          transform translate(-50%, -50%)
+          font-family 'Roboto Condensed'
+          padding 2px 5px
+          font-weight 700

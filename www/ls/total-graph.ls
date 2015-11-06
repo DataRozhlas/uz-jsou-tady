@@ -57,6 +57,8 @@ d3.select document .on \keydown.total ->
   return if d3.event.defaultPrevented
   if currentStep > maxStep
     if not scrolled
+      d3.event.preventDefault!
+      d3.event.stopPropagation!
       {top} = ig.utils.offset container.node!
       window.smoothScroll top + container.node!offsetHeight
       scrolled := yes
