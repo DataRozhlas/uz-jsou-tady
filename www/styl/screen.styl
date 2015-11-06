@@ -2,15 +2,18 @@
 @import prefixes
 @import 'components/triangle'
 
-
+MainColor = #311
+SecondaryColorLight = white
+SecondaryColor = lighten(MainColor, 95%)
+SecondaryColorDark = lighten(MainColor, 92%)
 @import basics
 body
   font-family 'Roboto', sans-serif
-  color #311
+  color MainColor
   section
     float left
     width 100%
-    height 100vh
+    // height 90vh
     text-align center
   h1
     font-weight 100
@@ -25,39 +28,97 @@ body
     color #611
     &:hover
       text-decoration none
+  p
+    font-size 18px
+    font-weight 300
+    margin 1.5em 0px
   section:nth-child(2n)
-    background #311
+    background MainColor
+    p, h1
+      color SecondaryColor
+    .black-bold
+      color MainColor
+      background SecondaryColor
+      margin 0px 0.3em
   .black-bold
-    background #311
-    color white
+    background MainColor
+    color SecondaryColorLight
     font-family 'Roboto Condensed'
     padding 2px 5px
     font-weight 700
-  .svg-container
-    position relative
-    width 600px
-    margin 0px auto
-    margin-top 40px
-    svg
-      margin-top 23px
-      path
-        fill none
-        stroke #311
-        stroke-width 2
-      circle
-        stroke #311
-        stroke-width 2
-        fill white
-    .label
-      position absolute
-      transform translate(-50%, -50%)
-    .label-x
-      position absolute
-      bottom -33px
-      text-align center
-      transform translate(-50%, 0%)
-      line-height 23px
-      font-weight 500
-      font-style italic
-      span
+  .step
+    transition opacity, 0.8s
+    opacity 0
+    &.active
+      opacity 1
+  section.daily
+    .svg-container
+      position relative
+      width 600px
+      margin 0px auto
+      margin-bottom 90px
+      margin-top 40px
+      svg
+        margin-top 23px
+        path
+          fill none
+          stroke MainColor
+          stroke-width 2
+        circle
+          stroke MainColor
+          stroke-width 2
+          fill SecondaryColor
+      .label
+        position absolute
+        transform translate(-50%, -50%)
+      .label-x
+        position absolute
+        bottom -33px
+        text-align center
+        transform translate(-50%, 0%)
+        line-height 23px
+        font-weight 400
+        font-style italic
+        span
+          font-weight 300
+  section.total
+    .history-container
+      width 100%
+      float left
+      height 300px
+      margin-bottom 50px
+      margin-top 40px
+    .history
+      margin 0px auto
+      position relative
+      width 600px
+      height 300px
+      .bar-container
+        position absolute
+        bottom 0px
+        height 100%
+        .bar
+          position absolute
+          background SecondaryColorDark
+          left 5px
+          width calc(100% - 10px)
+          bottom 0px
+          border-top-right-radius 2px
+          border-top-left-radius 2px
+          transition height 0.8s
+          .label-y
+            position absolute
+            top -27px
+            width 100%
+            text-align center
+            color SecondaryColorDark
+            font-family 'Roboto Condensed'
+            font-weight 700
+      .label-x
+        position absolute
+        left 0px
+        bottom -28px
+        width 100%
+        color SecondaryColor
         font-weight 300
+        text-align center

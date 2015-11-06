@@ -2,22 +2,32 @@
 <html>
 <head>
   <meta charset=utf-8 />
-  <script src="https://samizdat.cz/tools/d3/3.5.3.min.js"></script>
-  <script src="https://samizdat.cz/tools/topojson/1.6.8.min.js"></script>
-  <script src="https://samizdat.cz/tools/leaflet/0.7.3.cssjs.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,100,300italic&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <script src="/tools/d3/3.5.3.min.js"></script>
+  <script src="/tools/topojson/1.6.8.min.js"></script>
+  <script src="/tools/leaflet/0.7.3.cssjs.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,100,300,300italic&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="screen.css">
   <title>uz-jsou-tady</title>
 </head>
 <body>
-  <section>
+  <section class="ig daily" data-ig="daily">
     <h1><span>Už jsou tady?</span></h1>
     <h2><span class="black-bold">Ne.</span></h2>
-    <p>Včera policie ČR zjistila <span class="black-bold">13</span> migrantů.</p>
-    <p>Policie každý den zadrží průměrně <span class="black-bold">11</span> lidí jen za <a href="http://www.mapakriminality.cz/"> výrobu, držení a distribuci drog</a>. Přesto se o <em>invazi dealerů</em> nemluví.</p>
+    <p>Včera Policie ČR zadržela <span class="black-bold ig" data-ig="daily-number"></span> migranty.</p>
+    <p>Policie každý den zatkne průměrně <span class="black-bold">11</span> lidí jen za <a href="http://www.mapakriminality.cz/"> výrobu, držení a distribuci drog</a>. Přesto se o <em>invazi dealerů</em> nemluví.</p>
     <div class="ig" data-ig="daily-history"></div>
     <script src="script.js" charset="utf-8" async></script>
+  </section>
+  <section class="ig total" data-ig="total">
+    <h1>Už tu byli</h1>
+    <p>Od začátku české „uprchlické krize,“ 17. června 2015, zadrželi <span class="black-bold ig" data-ig="total-number"></span> lidí.</p>
+    <div class="history-container">
+      <div class="ig history" data-ig="total-history"></div>
+    </div>
+    <p class="step prestep">Pokud udrží současné tempo, na konci roku to bude <span class="black-bold">4 446</span> lidí.</p>
+    <p class="step step-1">To je o <span class="black-bold ig" data-ig="total-ratio">376 méně</span> než <em>loni</em>.</p>
+    <p class="step step-2">A <span class="black-bold">6 × méně</span> než v roce 2004, kdy bylo na území ČR zadrženo 27 391 migrantů, převážně z Ukrajiny a Moldavska.</p>
   </section>
 </body>
 </html>

@@ -1,4 +1,4 @@
-container = ig.containers['daily-history']
+container = ig.containers['daily']
 return unless container
 container = d3.select container
 values =
@@ -9,6 +9,7 @@ values =
   2 # 2 -3 3188
   1 # 3 - 4
   13 # 4 - 5  - 3202
+  3 # 5 - 6
 
 height = 150
 width = 600
@@ -16,13 +17,15 @@ width = 600
 padding = 10
 dayWidth = (width - 2 * padding) / (values.length - 1)
 
+ig.containers['daily-number'].innerHTML = values[*-1]
+
 scaleY = d3.scale.linear!
   ..domain [(d3.max values), 0]
   ..range [padding, (height - 2 * padding)]
 
 scaleX = (d, i) -> padding + (i + 0.5)* (dayWidth - 2 * padding)
 
-svgContainer = container.append \div
+svgContainer = d3.select ig.containers['daily-history'] .append \div
   ..attr \class \svg-container
 svg = svgContainer.append \svg
   ..attr {width, height}
@@ -55,3 +58,13 @@ svgContainer.selectAll \span.label-x .data dates .enter!append \span
   ..attr \class "label-x"
   ..html -> "#{it.getDate!}.<br><span>#{dayNames[it.getDay!]}</span>"
   ..style \left -> "#{scaleX ...}px"
+
+scrolled = no
+d3.select document .on \keydown.daily ->
+  return unless d3.event.keyCode == 40
+  return if scrolled
+  scrolled := yes
+  d3.event.preventDefault!
+  d3.event.stopPropagation!
+  height = container.node!offsetHeight
+  window.smoothScroll height
