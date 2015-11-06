@@ -51,10 +51,16 @@ historyContainer = d3.select ig.containers['total-history']
         ..html -> it.year
 
 currentStep = 0
+scrolled = no
 d3.select document .on \keydown.total ->
   return unless d3.event.keyCode == 40
   return if d3.event.defaultPrevented
-  return if currentStep > maxStep
+  if currentStep > maxStep
+    if not scrolled
+      {top} = ig.utils.offset container.node!
+      window.smoothScroll top + container.node!offsetHeight
+      scrolled := yes
+    return
   d3.event.preventDefault!
   d3.event.stopPropagation!
   if not prestepped then prestep! else step!

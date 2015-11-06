@@ -13,7 +13,6 @@ body
   section
     float left
     width 100%
-    // height 90vh
     text-align center
   h1
     font-weight 100
@@ -122,3 +121,39 @@ body
         color SecondaryColor
         font-weight 300
         text-align center
+  section.panic
+    min-height 100vh
+    .list
+      float left
+      width 100%
+      > h2
+      > ol
+        width 600px
+        margin 0px auto
+      > h2
+        font-size 38px
+        font-weight 300
+        .black-bold
+          margin 0px 0.2em
+          padding 0px 10px
+      > ol
+        text-align left
+        counter-reset list
+        margin-top 35px
+        li
+          list-style none
+          position relative
+          margin-bottom 1.5em
+          &:before
+            counter-increment list
+            content counter(list, lower-alpha) ") "
+            position absolute
+            left -1.4em
+            font-size 18px
+          h3
+            margin 0px
+            font-size 18px
+          p
+            margin 0px
+            font-size 16px
+            color desaturate(lighten(MainColor, 40%), 80%)
