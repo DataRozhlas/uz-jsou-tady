@@ -10,8 +10,9 @@ externalStyles =
   # \https://samizdat.cz/tools/tooltip/v1.1.4.css
   ...
 
-externalData = {}
-  # "data": "#__dirname/data/data.tsv"
+externalData =
+  "style": "#__dirname/www/screen.css"
+  "text": "#__dirname/data/text.html"
 
 preferScripts = <[ panic.js total-graph.js daily-graph.js geoUtils.js utils.js postInit.js _loadData.js ../data.js init.js _loadExternal.js]>
 deferScripts = <[ base.js ]>

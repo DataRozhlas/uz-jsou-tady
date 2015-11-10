@@ -10,7 +10,7 @@ window.smoothScroll = (offset) ->
     .duration 800
     .tween "scroll" scrollTween offset
 
-(err, values) <~ d3.tsv "../data/data.tsv", (row) ->
+(err, values) <~ d3.tsv "https://samizdat.cz/data-r/uz-jsou-tady/data/data.tsv", (row) ->
   for field, value of row
     row[field] = parseInt value, 10
   row.date = new Date!
