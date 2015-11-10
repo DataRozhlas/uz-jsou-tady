@@ -9,3 +9,16 @@ window.smoothScroll = (offset) ->
   d3.transition!
     .duration 800
     .tween "scroll" scrollTween offset
+
+(err, values) <~ d3.tsv "../data/data.tsv", (row) ->
+  for field, value of row
+    row[field] = parseInt value, 10
+  row.date = new Date!
+    ..setTime 0
+    ..setDate row.day
+    ..setMonth row.month - 1
+    ..setFullYear row.year
+  row
+
+ig.drawDaily values
+ig.drawYearly values[*-1]
