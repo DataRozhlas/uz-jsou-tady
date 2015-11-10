@@ -22,3 +22,9 @@ window.smoothScroll = (offset) ->
 
 ig.drawDaily values
 ig.drawYearly values[*-1]
+shares = d3.select ".shares"
+shares.select "a[target='_blank']" .on \click ->
+  window.open do
+    @getAttribute \href
+    ''
+    "width=550,height=265"
