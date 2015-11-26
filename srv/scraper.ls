@@ -23,7 +23,7 @@ download = ->
       url: "http://www.mvcr.cz/migrace/clanek/aktualni-statistiky.aspx"
       gzip: yes
     return unless body
-    dataLines = body.match /(.*?)osob\<\/li\>/gi
+    dataLines = body.match /(.*?)osob.?\<\/li\>/gi
     if dataLines.1.match /([0-9]+)\./
       [_, dayInReport] = that
       dayInReport = parseInt dayInReport, 10
