@@ -30,7 +30,7 @@ ig.drawYearly = (lastDatum) ->
   ig.containers['total-extrapolated'].innerHTML = ig.utils.formatNumber extrapolated
   dir = if 8096 > extrapolated then "méně" else "více"
   ig.containers['total-comparison-absolute'].innerHTML = "#{ig.utils.formatNumber Math.abs 8096 - extrapolated} #{dir}"
-  ig.containers['total-comparison-ratio'].innerHTML = "#{ig.utils.formatNumber 27391 / extrapolated} × více"
+  ig.containers['total-comparison-ratio'].innerHTML = "#{ig.utils.formatNumber 27391 / extrapolated} × méně"
 
 
   xScale = ->
@@ -58,7 +58,7 @@ ig.drawYearly = (lastDatum) ->
           ..style \height -> "#{yScale it.value}%"
           ..append \div
             ..attr \class \label-y
-            ..html -> num it.value / 1e3, 1
+            ..html -> num it.value
         ..append \div
           ..attr \class \label-x
           ..html -> it.year
