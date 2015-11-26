@@ -23,6 +23,7 @@ download = ->
       url: "http://www.mvcr.cz/migrace/clanek/aktualni-statistiky.aspx"
       gzip: yes
     return unless body
+    fs.writeFileSync "#__dirname/../data/scraped/#{Date.now!}.html", body
     dataLines = body.match /(.*?)osob.?\<\/li\>/gi
     if dataLines.1.match /([0-9]+)\./
       [_, dayInReport] = that
