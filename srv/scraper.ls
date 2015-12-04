@@ -33,7 +33,6 @@ download = ->
     [sum, count] = for line in dataLines
       numberPart = line.split ":" .pop!
       numberPart .= replace /[^0-9]/g ''
-
       parseInt numberPart, 10
 
     row =
