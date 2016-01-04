@@ -26,7 +26,7 @@ download = ->
     body .= replace /&nbsp;/g ' '
     fs.writeFileSync "#__dirname/../data/scraped/#{Date.now!}.html", body
     dataLines = body.match /[0-9 ]+ osob.?/gi
-    if dataLines.1.match /([0-9]+)\./
+    if body.match /z toho policie ([0-9]+)\./
       [_, dayInReport] = that
       dayInReport = parseInt dayInReport, 10
       return if dayInReport  != yesterday.getDate!

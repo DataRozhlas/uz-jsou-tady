@@ -4,8 +4,17 @@ ig.drawYearly = (lastDatum) ->
   container = d3.select container
   class Year
     (@year, @value, @special) ->
+  startTime = new Date!
+    ..setTime 0
+    ..setFullYear 2016
+    ..setMonth 0
+    ..setDate 1
+  timeSoFar = lastDatum.date.getTime! - startTime.getTime!
+  percentSpent = timeSoFar / (365 * 86400 * 1e3)
+  extrapolated = (lastDatum.sum - 3292) / percentSpent
   years =
-    new Year lastDatum.date.getFullYear!, lastDatum.sum, 'non-ex'
+    new Year lastDatum.date.getFullYear!, extrapolated, 'non-ex'
+    new Year 2015, 6008
     new Year 2014, 4822
     new Year 2013, 4153
     new Year 2012, 3595
@@ -17,20 +26,11 @@ ig.drawYearly = (lastDatum) ->
     new Year 2006, 11488
     new Year 2005, 15489
     new Year 2004, 27391
-
   width = 600
-  startTime = new Date!
-    ..setTime 0
-    ..setFullYear 2015
-    ..setMonth 5
-    ..setDate 17
-  timeSoFar = lastDatum.date.getTime! - startTime.getTime!
-  percentSpent = timeSoFar / (365 * 86400 * 1e3)
-  extrapolated = lastDatum.sum / percentSpent
-  ig.containers['total-extrapolated'].innerHTML = ig.utils.formatNumber extrapolated
+  # ig.containers['total-extrapolated'].innerHTML = ig.utils.formatNumber extrapolated
   dir = if 8096 > extrapolated then "méně" else "více"
-  ig.containers['total-comparison-absolute'].innerHTML = "#{ig.utils.formatNumber Math.abs 8096 - extrapolated} #{dir}"
-  ig.containers['total-comparison-ratio'].innerHTML = "#{ig.utils.formatNumber 27391 / extrapolated} × méně"
+  # ig.containers['total-comparison-absolute'].innerHTML = "#{ig.utils.formatNumber Math.abs 8096 - extrapolated} #{dir}"
+  # ig.containers['total-comparison-ratio'].innerHTML = "#{ig.utils.formatNumber 27391 / extrapolated} × méně"
 
 
   xScale = ->
@@ -43,8 +43,8 @@ ig.drawYearly = (lastDatum) ->
 
   num = ig.utils.formatNumber
   maxStep = 2
-  ig.containers['total-number'].innerHTML = num years.0.value
-  ig.containers['total-number']
+  ig.containers['total-number'].innerHTML = num lastDatum.sum - 3292
+
   historyContainer = d3.select ig.containers['total-history']
     ..append \div
       ..attr \class \bars
